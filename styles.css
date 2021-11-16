@@ -1,0 +1,122 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --subdued-color: hsl(200, 100%, 50%);
+  --text-color: hsl(200, 100%, 20%);
+  --avatar-size: 50px;
+  --grid-gap: 1rem;
+  --group-header-spacing: 1rem;
+}
+
+.notification-section {
+  margin-bottom: 2rem;
+}
+
+.notification-section:last-child {
+  margin-bottom: 0;
+}
+
+body {
+  background-color: #F3F3F3;
+  color: var(--text-color);
+}
+
+.avatar > img {
+  width: 100%;
+  border-radius: 100%;
+  border: 2px solid white;
+  display: block;
+}
+
+.notification-grid {
+  display: grid;
+  grid-template-columns: var(--avatar-size) 1fr;
+  grid-auto-rows: auto;
+  gap: var(--grid-gap);
+  max-width: 750px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.avatar {
+  position: relative;
+}
+
+.avatar::after {
+  content: "";
+  position: absolute;
+  background-color: var(--subdued-color);
+  width: 1px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: var(--avatar-size);
+  bottom: calc(var(--grid-gap) * -1);
+}
+
+.avatar:first-child::before {
+  content: "";
+  position: absolute;
+  background-color: var(--subdued-color);
+  width: 1px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: calc(-1 * var(--group-header-spacing));
+  bottom: 100%;
+}
+
+.avatar:nth-last-child(2)::after {
+  display: none;
+}
+
+.notification-card {
+  background-color: white;
+  border: 1px solid var(--subdued-color);
+  border-radius: .25rem;
+  padding: .75rem;
+}
+
+.notification-header {
+  display: flex;
+  gap: .5rem;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.notification-title {
+  flex-grow: 1;
+  font-size: 1.1rem;
+}
+
+.notification-time {
+  color: var(--subdued-color);
+}
+
+.notification-content {
+  background-color: #F0F0F0;
+  margin-top: .5rem;
+  padding: .25rem;
+  border-radius: .25rem;
+}
+
+.icon > path {
+  fill: var(--subdued-color);
+}
+
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--subdued-color);
+  padding-bottom: .25rem;
+  margin-bottom: var(--group-header-spacing);
+}
+
+.group-date {
+  color: var(--subdued-color);
+}
